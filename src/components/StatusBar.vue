@@ -1,28 +1,27 @@
 <script setup lang="ts">
-  interface Props {
-    title: (Title:string) => string,
-    bgSwatch: () => string
-  }
+interface Props {
+  containerTitle: (containerTitle?: string) => string
+  bgSwatch: () => string
+}
 
-const enTitle = function (title="StatusBar"): string {
-    return title + "-Container"
-  }
-
-const props = withDefaults(defineProps<Props>(),{
-  title: (title="StatusBar") => title + "-Container",
-  bgSwatch: () => "bg-stone-200"
+const props = withDefaults(defineProps<Props>(), {
+  containerTitle: () => 'StatusBar',
+  bgSwatch: () => 'bg-stone-200',
 })
-
+const enTitle = function (containerTitle?: string | unknown) {
+  return (title => `${title}-Container`)(typeof (containerTitle) === 'string' ? containerTitle : 'StatusBar')
+}
 </script>
 
 <template>
-  <div m-o p-0 container sticky>
-    <div :id="props.title()"
-    order-first
-    w-100%
-    :class="props.bgSwatch()"
+  <div m-o p-0 sticky w-full top-0 left-0 z-60 order-first>
+    <div
+      :id="enTitle(props.containerTitle())" flex flex-auto p-auto m-auto place-content-around place-self-center
+      place-items-center h-4rem :class="props.bgSwatch()"
     >
-      <h1>first component</h1>
+      <ul>
+        <slot />
+      </ul>
     </div>
   </div>
 </template>
