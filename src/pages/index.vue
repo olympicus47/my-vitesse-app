@@ -13,7 +13,6 @@ const { t } = useI18n()
 
 <template>
   <div p-0 m-0 w-full>
-    <StatusBar />
     <div text-4xl>
       <div i-carbon-campsite inline-block />
     </div>

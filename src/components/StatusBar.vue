@@ -14,12 +14,11 @@ const enTitle = function (containerTitle?: string | unknown) {
 </script>
 
 <template>
-  <div m-o p-0 sticky w-full top-0 left-0 z-60 order-first>
+  <div m-o p-0 sticky w-full top-0 left-0 z-0 order-first>
     <div
-      :id="enTitle(props.containerTitle())" flex flex-auto p-auto m-auto place-content-around place-self-center
-      place-items-center h-4rem :class="props.bgSwatch()"
+      :id="enTitle(props.containerTitle())" :class="props.bgSwatch()"
     >
-      <ul>
+      <ul flex flex-row flex-auto basis-auto justify-between p-auto m-auto h-4rem items-center space-x-6 justify-items-stretch px-4>
         <slot />
       </ul>
     </div>
