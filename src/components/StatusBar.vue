@@ -1,10 +1,15 @@
 <script setup lang="ts">
-interface Props {
-  title: () => String,
-}
+  interface Props {
+    title: (Title:string) => string,
+    bgSwatch: () => string
+  }
+
+const enTitle = function (title="StatusBar"): string {
+    return title + "-Container"
+  }
 
 const props = withDefaults(defineProps<Props>(),{
-  title: () => "StatusBar",
+  title: (title="StatusBar") => title + "-Container",
   bgSwatch: () => "bg-stone-200"
 })
 
@@ -12,7 +17,7 @@ const props = withDefaults(defineProps<Props>(),{
 
 <template>
   <div m-o p-0 container sticky>
-    <div :id="props.title() + '-Container' "
+    <div :id="props.title()"
     order-first
     w-100%
     :class="props.bgSwatch()"
