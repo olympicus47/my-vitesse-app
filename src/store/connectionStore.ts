@@ -20,7 +20,7 @@ function isThereInternet() { return useOnline().value ? 'Unconfirmed' as Connect
 async function isThereAuthentication() {
   let auth = 'Unconfirmed' as ConnectionState
   setTimeout(() => {
-    console.warn('Checking Authentication')
+    // console.warn('Checking Authentication')
   }, 1000 * 1)
   auth = 'Ok' as ConnectionState
   return auth
