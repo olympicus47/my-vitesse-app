@@ -7,8 +7,6 @@
       <ConnectionStatus />
       <SelectLocatie />
     </StatusBar>
-    <br p-0 m-0 text-xs>
     <RouterView />
-    <Footer />
   </main>
 </template>
