@@ -9,7 +9,7 @@ onUnmounted(() => locatiiRef.unsubLocatii())
 
 <template>
   <div v-cloak>
-    <select v-model="locatieSelectata" flex flex-col max-w-10rem h-2rem bg-green-50>
+    <select v-model="locatieSelectata" flex flex-col max-w-10rem h-2rem bg-green-50 text-gray-900>
       <option disabled value="Alege o locatie">
         Alege o Locatie
       </option>

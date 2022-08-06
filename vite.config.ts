@@ -13,6 +13,7 @@ import Inspect from 'vite-plugin-inspect'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
+import mkcert from 'vite-plugin-mkcert'
 
 export default defineConfig({
   resolve: {
@@ -20,6 +21,8 @@ export default defineConfig({
       '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
+
+  server: { https: true }, // added by me
 
   plugins: [
     Vue({
@@ -128,6 +131,7 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-inspect
     // Visit http://localhost:3333/__inspect/ to see the inspector
     Inspect(),
+    mkcert(),
   ],
 
   // https://github.com/vitest-dev/vitest
