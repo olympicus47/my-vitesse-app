@@ -6,7 +6,7 @@ import db from '~/firebase/firebaseApp'
 export const useLocatiiDbStore = defineStore('locatiiDbStore', () => {
   const colectionLocatiiRef = collection(db, '/Locatii') // /Locatii is correct
   const queryLocatiiRef = query(colectionLocatiiRef, orderBy('Nume', 'asc')) // /Locatii is correct
-  const locatii = ref([{ data: 'inca nu am facut nimic' }] as DocumentData[])
+  const locatii = ref([{ 'Nume': 'Inca nu', 'Adresa Locatie': 'am apucat sa ma conectez la Firestore' }] as Locatie[])
   const locatieSelectata = ref('')
   const unsubLocatii = onSnapshot(queryLocatiiRef, (querySnapshot) => {
     if (querySnapshot) {
@@ -15,7 +15,7 @@ export const useLocatiiDbStore = defineStore('locatiiDbStore', () => {
       // console.error(locatii)
     }
     else {
-      locatii.value = [{ data: 'nu am putut sa obtin un snapshot' }]
+      locatii.value = [{ 'Nume': 'Firestore', 'Adresa Locatie': 'nu imi raspunde cu Locatii' }]
     }
   })
 
@@ -25,3 +25,10 @@ export const useLocatiiDbStore = defineStore('locatiiDbStore', () => {
     unsubLocatii,
   }
 })
+
+export interface Locatie extends DocumentData {
+
+  'Nume': string
+  'Adresa Locatie': string
+
+}
