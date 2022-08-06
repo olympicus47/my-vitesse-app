@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore/lite'
+import { initializeApp /* , setLogLevel */ } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 
@@ -12,6 +12,9 @@ const firebaseConfig = {
   appId: '1:821131748722:web:f7a48a016e110f4038a9eb',
 }
 
-const app = initializeApp(firebaseConfig)
-export const db = getFirestore(app)
+const app = () => (() => initializeApp(firebaseConfig))() //  used thunking to insure a specific instance both here
+// setLogLevel('debug')
 
+const db = () => (() => getFirestore(app()))() // and here
+
+export default db()
