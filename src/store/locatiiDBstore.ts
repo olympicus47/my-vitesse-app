@@ -5,7 +5,7 @@ import db from '~/firebase/firebaseApp'
 
 export const useLocatiiDbStore = defineStore('locatiiDbStore', () => {
   const colectionLocatiiRef = collection(db, '/Locatii') // /Locatii is correct
-  const queryLocatiiRef = query(colectionLocatiiRef, orderBy('Nume', 'asc')) // /Locatii is correct
+  const queryLocatiiRef = query(colectionLocatiiRef, orderBy('Nume', 'asc')) // query have a docs property which is an array
   const locatii = ref([{ 'Nume': 'Inca nu', 'Adresa Locatie': 'am apucat sa ma conectez la Firestore' }] as Locatie[])
   const locatieSelectata = ref('')
   const unsubLocatii = onSnapshot(queryLocatiiRef, (querySnapshot) => {
