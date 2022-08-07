@@ -1,15 +1,27 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 // import { onUnmounted } from 'vue' // // //
 import { useLocatiiDbStore } from '~/store/locatiiDBstore.js'
 const locatiiRef = useLocatiiDbStore()
-const locatii = locatiiRef.locatii
-// onUnmounted(() => locatiiRef.detachLocatiiDb())
+const { locatii, locatieSelectata } = storeToRefs(locatiiRef)
+onUnmounted(() => locatiiRef.unsubLocatii())
 </script>
 
 <template>
-  <div bg-yellow-50 w-100>
-    <span>1111</span>
-    <span v-for="(locatie, index) in locatii" :key="index"> | HELLO | {{ locatie }}</span>
+  <div v-cloak>
+    <select v-model="locatieSelectata" flex flex-col max-w-10rem h-2rem bg-green-50 text-gray-900>
+      <option disabled value="Alege o locatie">
+        Alege o Locatie
+      </option>
+      <option v-for="locatie, indLocatie in locatii" :key="indLocatie" :value="locatie.Nume" flex flex-col block bg-yellow-50>
+        <span text-4rem>
+          {{ locatie.Nume }}
+          <p text-xs>
+            {{ locatie['Adresa Locatie'] }}
+          </p>
+        </span>
+      </option>
+    </select>
   </div>
 </template>
 
