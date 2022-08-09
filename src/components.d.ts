@@ -11,7 +11,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScannerComponent: typeof import('./components/ScannerComponent.vue')['default']
-    SelectLocatie: typeof import('./components/SelectLocatie.vue')['default']
+    SelectLocation: typeof import('./components/SelectLocation.vue')['default']
     StatusBar: typeof import('./components/StatusBar.vue')['default']
   }
 }

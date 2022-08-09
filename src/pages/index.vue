@@ -8,7 +8,6 @@
 
 <template>
   <div p-0 m-0 w-full>
-    <h1>Oustide of layout and inside index page by way of routerview</h1>
   </div>
 </template>
 

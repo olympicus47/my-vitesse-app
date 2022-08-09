@@ -7,7 +7,7 @@ const currentConnectionState = connectionStore.connectionState
 </script>
 
 <template :componentTitle>
-  <li z-1 self-center flex justify-between>
+  <li z-1 self-center flex justify-between text-gray-800 dark:text-gray-400>
     <div i-carbon:content-delivery-network text-blue place-self-auto order-first text-4xl />
     <span w-2rem />
     <div v-show="currentConnectionState === 'Ok'" inline-block flex place-items-center>
